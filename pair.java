@@ -44,7 +44,6 @@ public class pair
 		this.notch = notch;
 	}
 	
-	//toString method: Is this even needed?
 	public String toString()
 	{
 		return "pair [first=" + first + ", second=" + second + "]";

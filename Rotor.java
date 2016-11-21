@@ -4,12 +4,10 @@ import java.util.Scanner;
 
 public class Rotor
 {
-	//Attributes:
 	private ArrayList<pair> pairList = new ArrayList<pair>();
 	private int current;
 	private int pointer;
 
-	//constructor:
 	public Rotor(String fileName, int notch) throws IOException
 	{
 		Scanner inputFile = new Scanner(new File(fileName));
@@ -21,7 +19,6 @@ public class Rotor
 		pairList.get(notch + 26).setNotch(true);
 	}
 
-	//get and set methods:
 	public void setCurrent(int start)
 	{
 		this.current = start;
@@ -47,7 +44,6 @@ public class Rotor
 		return pairList;
 	}
 
-	//Method to change
 	public String change(Rotor next, String C)
 	{ 
 		String temp = "";
@@ -66,8 +62,6 @@ public class Rotor
 			}
 		}
 
-		// next.setPointer(i - current);
-
 		if (loop)
 			return next.getList().get(i + next.getCurrent() + 51 - current).getSecond();
 
@@ -77,10 +71,9 @@ public class Rotor
 			return next.getList().get(next.getCurrent() + i - current - 1).getSecond(); // return index of next rotor
 	}
 
-	//method to change back (basically just the reverse of the change method):
-	public String changeBack(Rotor next, String C)// same as the change method with minor differences
+	//change in reverse
+	public String changeBack(Rotor next, String C) 
 	{ 
-
 		String temp = "";
 		int i = current;
 		boolean loop = false;
@@ -95,7 +88,6 @@ public class Rotor
 				loop = true;
 			}
 		}
-		// System.out.println("current:" + current + "\nnext current:" + next.getCurrent() + "\ni:" + i);
 		if (loop)
 			return next.getList().get(i + next.getCurrent() + 51 - current - 1).getFirst();
 
@@ -105,7 +97,6 @@ public class Rotor
 			return next.getList().get(next.getCurrent() + i - current - 1).getFirst(); // return index of next rotor
 	}
 
-	//boolean method turn:
 	public boolean turn()
 	{
 		if (current == 51) // advance current position

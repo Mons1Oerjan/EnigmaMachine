@@ -2,7 +2,6 @@ import java.io.*;
 import java.net.*;
 import java.awt.*;
 import java.awt.event.*;
-// import package.Enigma.*;
 
 import javax.swing.*;
 
@@ -111,7 +110,6 @@ public class Server extends JFrame
 			{
 				temp = msg; // temp to recognize end
 				msg = (String) input.readObject();
-				// msg = RH.encryptMe(msg);
 				showMessage("\nCLIENT - " + msg); // decrypt here
 			}
 			catch (ClassNotFoundException classNotFoundException)
@@ -119,8 +117,7 @@ public class Server extends JFrame
 				showMessage("\n User tried to send an illegal message! ");
 			}
 		}
-		while (!temp.equals("END")); // removed CLIENT - //END DOES NOT WORK
-										// IF KEYS ARE NOT SAME
+		while (!temp.equals("END")); 
 	}
 
 	private void closeAll()
@@ -146,8 +143,7 @@ public class Server extends JFrame
 			if (msg.length() > 5)
 			{
 				if (msg.substring(0, 5).equals("//KEY"))
-				{ // NOT COOL INPUT -
-					// MAKE FIX
+				{ 
 					key = msg.substring(5, msg.length());
 					showMessage("\n> KEY CHANGED TO " + key.toUpperCase());
 				}
@@ -155,7 +151,7 @@ public class Server extends JFrame
 			{
 				showMessage("\nSERVER - " + msg);
 				msg = encrypt(msg);
-				output.writeObject(msg); // encrypt here REMOVED SERVER
+				output.writeObject(msg); //encrypt here
 				output.flush();
 			}
 		}

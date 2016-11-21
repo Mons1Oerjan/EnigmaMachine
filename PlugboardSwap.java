@@ -6,7 +6,6 @@ public class PlugboardSwap
 
 	// letters not included: B, D, G, J, K, X
 
-	// method to swap letters:
 	public String Swap(String input)
 	{
 		for (int i = 0; i < 10; i++) // go through the array "first"

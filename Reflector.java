@@ -15,7 +15,7 @@ public class Reflector
 		inputFile.close();
 	}
 
-	// Reflect method: [go from rotor1 --> reflector --> find corresponding letter --> rotor1]
+	// [go from rotor1 --> reflector --> find corresponding letter --> rotor1]
 	public String reflect(Rotor rotor, String s)
 	{
 		int count = 0;

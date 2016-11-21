@@ -7,7 +7,7 @@ public class test
 
 	public static void main(String[] args) throws IOException
 	{
-		Scanner inputFile = new Scanner(new File("LETTERS.txt")); // connect to file containing all alphabete for input
+		Scanner inputFile = new Scanner(new File("LETTERS.txt")); // connect to file containing all alphabet for input
 		ArrayList<String> letters = new ArrayList<String>(); // and fill in letters arraylist
 		Reflector reflector = new Reflector();
 

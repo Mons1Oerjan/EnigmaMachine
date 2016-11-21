@@ -5,7 +5,6 @@ import java.util.ArrayList;
 
 public class RotorHandler
 {
-	//Attributes:
 	private Rotor[] rotor = new Rotor[3];
 
 	//constructor:
@@ -14,7 +13,6 @@ public class RotorHandler
 		Calendar cal = Calendar.getInstance(); // gets current date
 		int dayOfMonth = cal.get(Calendar.DAY_OF_MONTH);
 		String dayOfMonthStr = String.valueOf(dayOfMonth);
-		// System.out.println(dayOfMonthStr);
 
 		Scanner settingsFile = new Scanner(new File("SETTINGS.txt"));
 
@@ -42,7 +40,7 @@ public class RotorHandler
 			else
 				settingsFile.nextLine();
 		settingsFile.close();
-	}//end of constructor
+	}
 
 	// encrypts a single character:
 	public String encryptMe(String toBeEncrypted) throws IOException
@@ -60,45 +58,26 @@ public class RotorHandler
 		while (inputFile.hasNext())
 			letters.add(inputFile.next());
 
-		// toBeEncrypted = swapper.Swap(toBeEncrypted);
-		// System.out.println("Swapped: " + toBeEncrypted);
-
 		if (rotor[2].turn()) // turn and turn next if true
 		{ 
-			// System.out.println("#####");
 			if (rotor[1].turn())
 				rotor[0].turn();
 		}
-
-		// System.out.println(toBeEncrypted);
 
 		if (rotor[2].getCurrent() + letters.indexOf(toBeEncrypted) > 51)
 			toBeEncrypted = rotor[2].getList().get(letters.indexOf(toBeEncrypted) - (51 - rotor[2].getCurrent()) - 1).getSecond();
 		else
 			toBeEncrypted = rotor[2].getList().get(rotor[2].getCurrent() + letters.indexOf(toBeEncrypted)).getSecond();
 
-		// System.out.println(toBeEncrypted); // by returing index at letter index + curr index
-
-		toBeEncrypted = rotor[2].change(rotor[1], toBeEncrypted); // change and print
-		// System.out.println(toBeEncrypted);
-
+		toBeEncrypted = rotor[2].change(rotor[1], toBeEncrypted);
 		toBeEncrypted = rotor[1].change(rotor[0], toBeEncrypted);
-		// System.out.println(toBeEncrypted);
-
 		toBeEncrypted = reflect.reflect(rotor[0], toBeEncrypted);
-		// System.out.println(toBeEncrypted);
-
 		toBeEncrypted = rotor[0].changeBack(rotor[1], toBeEncrypted);
-		// System.out.println(toBeEncrypted);
-
 		toBeEncrypted = rotor[1].changeBack(rotor[2], toBeEncrypted);
-		// System.out.println(toBeEncrypted);
-
-		// toBeEncrypted = swapper.Swap(toBeEncrypted);
 
 		String compare = "";
-		ArrayList<pair> compareList = rotor[2].getList(); // creates an instance of robot3's pair list to be compared
-		boolean found = false; // ADDED HERE
+		ArrayList<pair> compareList = rotor[2].getList(); // creates an instance of rotor3's pair list to be compared
+		boolean found = false; 
 
 		for (int i = 0; i < 26; i++)
 		{
@@ -114,5 +93,5 @@ public class RotorHandler
 			}
 		}
 		return toBeEncrypted;
-	}//end of encryptMe
-}//end of RotorHandler
+	}
+}
